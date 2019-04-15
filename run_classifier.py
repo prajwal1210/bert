@@ -449,12 +449,12 @@ class MovieProcessor(DataProcessor):
     def get_train_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-            self._read_csv(os.path.join(data_dir, "NewTraining.csv")), "train")
+            self._read_csv(os.path.join(data_dir, "Train.csv")), "train")
 
     def get_dev_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-            self._read_csv(os.path.join(data_dir, "NewTest.csv")), "dev")
+            self._read_csv(os.path.join(data_dir, "Test.csv")), "dev")
 
     def get_labels(self):
         """See base class."""
@@ -467,8 +467,8 @@ class MovieProcessor(DataProcessor):
             if i == 0:
                 continue
             guid = "%s-%s" % (set_type, i-1)
-            text_a = line[3]
-            label = line[2]
+            text_a = line[4]
+            label = str(int(float(line[12])))
             text_b = None
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
