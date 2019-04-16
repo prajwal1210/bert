@@ -467,7 +467,7 @@ class MovieProcessor(DataProcessor):
             if i == 0:
                 continue
             guid = "%s-%s" % (set_type, i-1)
-            text_a = line[4]
+            text_a = line[4].lower()
             label = str(int(float(line[12])))
             text_b = None
             examples.append(
