@@ -445,8 +445,9 @@ class SemProcessor(DataProcessor):
 
 class MovieProcessor(DataProcessor):
     """Processor for the Movie data set (GLUE version)."""
-    def __init__(self,num=5):
-        self.num = num
+    def __init__(self,num1=5, num2 =13):
+        self.num1 = num1
+        self.num2 = num2
 
     def get_train_examples(self, data_dir):
         """See base class."""
@@ -469,8 +470,8 @@ class MovieProcessor(DataProcessor):
             if i == 0:
                 continue
             guid = "%s-%s" % (set_type, i-1)
-            text_a = line[self.num].lower()
-            label = str(int(float(line[13])))
+            text_a = line[self.num1].lower()
+            label = str(int(float(line[self.num2])))
             text_b = None
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
